@@ -16,6 +16,7 @@
 package org.springframework.data.relational.core.mapping.event;
 
 import org.springframework.data.relational.core.conversion.AggregateChange;
+import org.springframework.data.relational.core.conversion.MutableAggregateChange;
 import org.springframework.data.relational.core.mapping.event.Identifier.Specified;
 
 /**
@@ -31,7 +32,8 @@ public class BeforeConvertEvent extends RelationalEventWithIdAndEntity {
 	/**
 	 * @param id identifier of the saved entity.
 	 * @param instance the saved entity.
-	 * @param change the {@link AggregateChange} encoding the actions performed on the database as part of the delete.
+	 * @param change the {@link MutableAggregateChange} encoding the actions performed on the database as part of the
+	 *          delete.
 	 */
 	public BeforeConvertEvent(Specified id, Object instance, AggregateChange change) {
 		super(id, instance, change);

@@ -19,6 +19,7 @@ import java.util.Optional;
 
 import org.springframework.context.ApplicationEvent;
 import org.springframework.data.relational.core.conversion.AggregateChange;
+import org.springframework.data.relational.core.conversion.MutableAggregateChange;
 import org.springframework.lang.Nullable;
 
 /**
@@ -62,7 +63,7 @@ class SimpleRelationalEvent extends ApplicationEvent implements RelationalEvent 
 	}
 
 	/**
-	 * Returns the an {@link AggregateChange} instance representing the SQL statements performed by the action that
+	 * Returns the an {@link MutableAggregateChange} instance representing the SQL statements performed by the action that
 	 * triggered this event.
 	 *
 	 * @return Guaranteed to be not {@literal null}.

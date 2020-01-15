@@ -321,7 +321,7 @@ public class BasicJdbcConverter extends BasicRelationalConverter implements Jdbc
 	public <T> T mapRow(RelationalPersistentEntity<T> entity, ResultSet resultSet, Object key) {
 		return new ReadingContext<T>(
 				new PersistentPropertyPathExtension(
-						(MappingContext<RelationalPersistentEntity<?>, RelationalPersistentProperty>) getMappingContext(), entity),
+						getMappingContext(), entity),
 				resultSet, Identifier.empty(), key).mapRow();
 	}
 
@@ -352,7 +352,7 @@ public class BasicJdbcConverter extends BasicRelationalConverter implements Jdbc
 			this.resultSet = resultSet;
 			this.rootPath = rootPath;
 			this.path = new PersistentPropertyPathExtension(
-					(MappingContext<RelationalPersistentEntity<?>, RelationalPersistentProperty>) getMappingContext(),
+					getMappingContext(),
 					this.entity);
 			this.identifier = identifier;
 			this.key = key;
@@ -427,7 +427,7 @@ public class BasicJdbcConverter extends BasicRelationalConverter implements Jdbc
 					? this.identifier.withPart(rootPath.getQualifierColumn(), key, Object.class) //
 					: Identifier.of(rootPath.extendBy(property).getReverseColumnName(), id, Object.class);
 
-			PersistentPropertyPath<RelationalPersistentProperty> propertyPath = path.extendBy(property)
+			PersistentPropertyPath<? extends RelationalPersistentProperty> propertyPath = path.extendBy(property)
 					.getRequiredPersistentPropertyPath();
 
 			return relationResolver.findAllByPath(identifier, propertyPath);

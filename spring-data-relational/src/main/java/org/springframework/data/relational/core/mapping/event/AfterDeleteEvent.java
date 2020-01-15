@@ -18,6 +18,7 @@ package org.springframework.data.relational.core.mapping.event;
 import java.util.Optional;
 
 import org.springframework.data.relational.core.conversion.AggregateChange;
+import org.springframework.data.relational.core.conversion.MutableAggregateChange;
 import org.springframework.data.relational.core.mapping.event.Identifier.Specified;
 
 /**
@@ -33,8 +34,8 @@ public class AfterDeleteEvent extends RelationalEventWithId {
 	/**
 	 * @param id of the entity.
 	 * @param instance the deleted entity if it is available.
-	 * @param change the {@link AggregateChange} encoding the actions that were performed on the database as part of the
-	 *          delete operation.
+	 * @param change the {@link MutableAggregateChange} encoding the actions that were performed on the database as part
+	 *          of the delete operation.
 	 */
 	public AfterDeleteEvent(Specified id, Optional<?> instance, AggregateChange change) {
 		super(id, instance, change);
